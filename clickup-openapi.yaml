@@ -1,0 +1,61 @@
+openapi: 3.0.0
+info:
+  title: ClickUp API
+  description: Comprehensive OpenAPI specification for ClickUp's REST API
+  version: '2.0'
+  contact:
+    name: ClickUp Support
+    url: https://clickup.com/help
+
+servers:
+  - url: https://api.clickup.com/api/v2
+    description: ClickUp API v2
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key must be provided in the Authorization header
+  
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Task ID
+        name:
+          type: string
+          description: Task name
+        description:
+          type: string
+          description: Task description
+        status:
+          type: object
+          properties:
+            status:
+              type: string
+              description: Status name
+            color:
+              type: string
+              description: Status color
+        priority:
+          type: number
+          description: Task priority (1-4, where 1 is urgent)
+        due_date:
+          type: string
+          format: date-time
+          description: Task due date
+        start_date:
+          type: string
+          format: date-time
+          description: Task start date
+        list:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
